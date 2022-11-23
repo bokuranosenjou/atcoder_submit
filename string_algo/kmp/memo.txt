@@ -1,0 +1,12 @@
+KMP[i] ... S[0:i)で接頭辞と接尾辞がA[i]文字一致している。(ただしA[0] = -1)
+
+・実装
+(MP) https://snuke.hatenablog.com/entry/2014/12/01/235807
+(KMP)https://potetisensei.hatenablog.com/entry/2017/07/10/174908
+
+・問題
+https://snuke.hatenablog.com/entry/2015/04/05/184819
+文字列 S が与えられる。S[0~i] の最小の周期長を全部まとめて O(N) で求めよ。
+ans[0] = 1 - KMP[1] , ans[1] = 2 - KMP[2] , ...
+
+考え方：KMP[i]だけずらすと元の文字列の接頭辞と同じ文字列が出てくる。
