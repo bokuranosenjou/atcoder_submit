@@ -157,6 +157,26 @@ struct Euler_tour{
         int lca = get_lca(x,y);
         return get_vcost2_from_root(x) + get_vcost2_from_root(y) - 2 * get_vcost2_from_root(lca) + icost[lca];
     }
+    // 以下動作未確認
+    void update_vcost(int v, int val){
+        seg_rsq_v1.set(discovery[v],val);
+        seg_rsq_v2.set(discovery[v],val);
+        seg_rsq_v2.set(finishing[v],-val);
+        icost[v] = val;
+        vcost1[discovery[v]] = val;
+        vcost2[discovery[v]] = val;
+        vcost2[finishing[v]] = -val;
+    }
+    void add_vcost(int v, int diff){
+        auto val = icost[v] + diff;
+        seg_rsq_v1.set(discovery[v],val);
+        seg_rsq_v2.set(discovery[v],val);
+        seg_rsq_v2.set(finishing[v],-val);
+        icost[v] = val;
+        vcost1[discovery[v]] = val; 
+        vcost2[discovery[v]] = val;
+        vcost2[finishing[v]] = val;
+    }
 };
 
 int main(){
